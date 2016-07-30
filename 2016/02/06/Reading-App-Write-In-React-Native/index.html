@@ -1,0 +1,1103 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="react-native," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lifecycle" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://7xr0xq.com1.z0.glb.clouddn.com/%E5%9B%9B%E4%BB%A3.jpg?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="转载请注明出处：http://richardcao.me/
+reading项目开源地址：https://github.com/attentiveness/reading
+Reading App Write In React-Native
+No Profit, No Advertisement, Only Feelings
+
+这是一个产品级的开源项目（请允许我这么说）。
+Init打开我的git lo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reading App Write In React-Native">
+<meta property="og:url" content="http://richard-cao.github.io/2016/02/06/Reading-App-Write-In-React-Native/index.html">
+<meta property="og:site_name" content="Lifecycle">
+<meta property="og:description" content="转载请注明出处：http://richardcao.me/
+reading项目开源地址：https://github.com/attentiveness/reading
+Reading App Write In React-Native
+No Profit, No Advertisement, Only Feelings
+
+这是一个产品级的开源项目（请允许我这么说）。
+Init打开我的git lo">
+<meta property="og:image" content="http://7xr0xq.com1.z0.glb.clouddn.com/Reading%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E5%B1%95%E7%A4%BA.jpg">
+<meta property="og:image" content="http://7xr0xq.com1.z0.glb.clouddn.com/reading_in_react-native_showcase.jpg">
+<meta property="og:updated_time" content="2016-07-30T04:43:26.209Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Reading App Write In React-Native">
+<meta name="twitter:description" content="转载请注明出处：http://richardcao.me/
+reading项目开源地址：https://github.com/attentiveness/reading
+Reading App Write In React-Native
+No Profit, No Advertisement, Only Feelings
+
+这是一个产品级的开源项目（请允许我这么说）。
+Init打开我的git lo">
+<meta name="twitter:image" content="http://7xr0xq.com1.z0.glb.clouddn.com/Reading%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E5%B1%95%E7%A4%BA.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6220727634687428000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://richard-cao.github.io/2016/02/06/Reading-App-Write-In-React-Native/"/>
+
+  <title> Reading App Write In React-Native | Lifecycle </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71065147-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?81bfa0d04c3d95fc8164207e06fbc43d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lifecycle</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">真正的梦就是现实的彼岸。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Reading App Write In React-Native
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-06T14:56:57+00:00" content="2016-02-06">
+              2016-02-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/open-source/" itemprop="url" rel="index">
+                    <span itemprop="name">open source</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/06/Reading-App-Write-In-React-Native/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/06/Reading-App-Write-In-React-Native/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/02/06/Reading-App-Write-In-React-Native/" class="leancloud_visitors" data-flag-title="Reading App Write In React-Native">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>转载请注明出处：<a href="http://richardcao.me/" target="_blank" rel="external">http://richardcao.me/</a></p>
+<p><strong>reading项目开源地址：<a href="https://github.com/attentiveness/reading" target="_blank" rel="external">https://github.com/attentiveness/reading</a></strong></p>
+<h2 id="Reading-App-Write-In-React-Native"><a href="#Reading-App-Write-In-React-Native" class="headerlink" title="Reading App Write In React-Native"></a>Reading App Write In React-Native</h2><blockquote>
+<p>No Profit, No Advertisement, Only Feelings</p>
+</blockquote>
+<p>这是一个产品级的开源项目（请允许我这么说）。</p>
+<h2 id="Init"><a href="#Init" class="headerlink" title="Init"></a>Init</h2><p>打开我的git log看了看，创建reading项目的时间是<strong>2015年12月11日上午1:00</strong>，我依然记得那时候我的初衷是想做一个react-native为主导开发的APP。从刚开始学js到做公司android项目中react-native模块的开发还不到一个月，我想，能否用react-native为主导开发一个自己的APP来慢慢学习呢？于是我就init了reading项目放到了我的github上，还专门建了一个organization叫<a href="https://github.com/attentiveness" target="_blank" rel="external">attentiveness</a>，愉快的装了一逼。但是到<strong>2015年12月13日下午3:15</strong>的时候，我更新了一发commit就暂停了。因为当时我还不知道应该怎么去写代码，我都不知道js的代码规范是怎么样的，我也不知道做reading到底需要做什么需求，在迷茫之中，我停止了reading项目的开发。</p>
+<h2 id="Restart"><a href="#Restart" class="headerlink" title="Restart"></a>Restart</h2><p>当我重启reading项目的时候，记录显示时间是<strong>2016年1月25日上午1:24</strong>。为什么重启reading项目？其实很简单，之前搁置的原因就是我不知道到底要做什么需求，到底应该如何去做，也不知道代码怎样去写。截止16年1月25日的时候，正好是我做公司的react-native项目刚满一个月的日子，我已经知道了如何去写代码，如何去做一个项目，所以我重启了reading项目。需求哪里来？我的一个小伙伴想做产品经理，但是他以前根本没有经验，那就一起学。需求就这么来了，于是我们就说干就干了。</p>
+<h2 id="0-1-2"><a href="#0-1-2" class="headerlink" title="0.1.2"></a>0.1.2</h2><p><strong>0.1.2是Reading app发布市场的第一个版本</strong>。为什么是0.1.2？因为0.1.1是reading的内测版本，内测平台我选择了<a href="http://www.pgyer.com/" target="_blank" rel="external">蒲公英</a>。说实话，这是我第一次打react-native开发的app的release包，第一次把一个自己认为称得上是<code>项目</code>的app发布到了应用市场。</p>
+<blockquote>
+<ul>
+<li>360市场下载地址：<a href="http://zhushou.360.cn/detail/index/soft_id/3217938?recrefer=SE_D_Reading" target="_blank" rel="external">Download Reading</a></li>
+<li>豌豆荚下载地址：<a href="http://www.wandoujia.com/apps/com.reading" target="_blank" rel="external">Download Reading</a></li>
+</ul>
+</blockquote>
+<h2 id="React-Native-Android类似弹窗效果的实现"><a href="#React-Native-Android类似弹窗效果的实现" class="headerlink" title="React-Native Android类似弹窗效果的实现"></a>React-Native Android类似弹窗效果的实现</h2><p>在react-native ios中，可以用<a href="https://facebook.github.io/react-native/docs/modal.html#content" target="_blank" rel="external">Modal</a>组件实现这个效果，但是官方文档中明确注明了这个组件是</p>
+<blockquote>
+<p>This component is only available in iOS at this time.</p>
+</blockquote>
+<p>OK，那android怎么办？从官方的<a href="https://facebook.github.io/react-native/docs/known-issues.html#content" target="_blank" rel="external">Known Issues</a>中可以看到，官方有让Modal组件支持android的计划，但是这个版本是没有的，现在最新版本<a href="https://github.com/facebook/react-native/releases" target="_blank" rel="external">0.19.0的release note</a>中也是没有的，但是reading app要上线第一个版本，就必须实现分享的弹窗。当时考虑有两种方案：<code>dialog</code>和<code>spinner</code>。官方组件是有dialog的，这个组件是<a href="https://facebook.github.io/react-native/docs/alert.html#content" target="_blank" rel="external">Alert</a>，但是这个组件并不支持自定义UI，只是固定的样式模板，那么无法实现我这个需求。<code>spinner</code>组件官方还没支持，并且明确了以后会支持，所以我想到了能不能有android可以使用的类似Modal的组件呢？于是我找来找去，还真有，官方文档中并未提及，这个组件的名字叫<a href="https://github.com/facebook/react-native/blob/master/Libraries/Portal/Portal.js" target="_blank" rel="external">Portal</a>。组件找到就好办了，于是我开始动手实现。</p>
+<p>首先引入Portal：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Portal <span class="keyword">from</span> <span class="string">'react-native/Libraries/Portal/Portal.js'</span>;</div></pre></td></tr></table></figure>
+<p>引入之后，我看了下Portal，使用起来也挺简单，虽然没有文档，但是可以看到，我能用到的有这么几个方法</p>
+<blockquote>
+<ul>
+<li>allocateTag</li>
+<li>showModal</li>
+<li>closeModal</li>
+<li>getOpenModals</li>
+</ul>
+</blockquote>
+<p>那么就简单了，引入之后我需要</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">componentWillMount() &#123;</div><div class="line">    <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</div><div class="line">      <span class="built_in">tag</span> = <span class="keyword">Portal</span>.allocateTag();</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>拿到<code>tag</code>之后</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">onActionSelected</span>() &#123;</div><div class="line">    Portal<span class="selector-class">.showModal</span>(tag, this.renderSpinner());</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>这里的<code>onActionSelected</code>是<a href="https://facebook.github.io/react-native/docs/toolbarandroid.html#content" target="_blank" rel="external">ToolbarAndroid</a>的一个属性，可以触发点击action的事件，我的分享按钮就在右上角，那么点击之后，分享的弹窗就出现了。</p>
+<p>那么如何关闭？我这里做的比较简单，是这样的</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">goBack() &#123;</div><div class="line">    <span class="keyword">if</span> (Portal.getOpenModals().length != <span class="number">0</span>) &#123;</div><div class="line">      Portal.closeModal(tag);</div><div class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (canGoBack) &#123;</div><div class="line">      <span class="keyword">this</span>.refs.webview.goBack();</div><div class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> NaviGoBack(<span class="keyword">this</span>.props.navigator);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>然后</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">componentDidMount</span>() &#123;</div><div class="line">    BackAndroid<span class="selector-class">.addEventListener</span>(<span class="string">'hardwareBackPress'</span>, this.goBack);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="selector-tag">componentWillUnmount</span>() &#123;</div><div class="line">    BackAndroid<span class="selector-class">.removeEventListener</span>(<span class="string">'hardwareBackPress'</span>, this.goBack);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>这个UI怎么像是一个弹窗呢？其实技巧就在于背景颜色上面。我的分享View是居中的，背景颜色我用了rgba设置了透明度，就像是这样</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">backgroundColor:</span> <span class="string">'rgba(0, 0, 0, 0.65)'</span></div></pre></td></tr></table></figure>
+<p>那么就非常像一个弹窗啦~具体效果可以看<a href="https://github.com/attentiveness/reading/blob/master/screenshot/Reading_Share.jpg" target="_blank" rel="external">这里</a></p>
+<h2 id="Release-Note与线上事故复盘"><a href="#Release-Note与线上事故复盘" class="headerlink" title="Release Note与线上事故复盘"></a>Release Note与线上事故复盘</h2><p>针对这部分，我也在项目中专门写了这两个文档，具体可以看</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/attentiveness/reading/releases" target="_blank" rel="external">Reading Release Note</a></li>
+<li><a href="https://github.com/attentiveness/reading/blob/master/Reading_OnLine_Accident.md" target="_blank" rel="external">Release线上事故复盘</a></li>
+</ul>
+</blockquote>
+<p>文档会根据实际情况保持更新，这是reading自己的积累。</p>
+<h2 id="敏捷开发"><a href="#敏捷开发" class="headerlink" title="敏捷开发"></a>敏捷开发</h2><p>git工作流我就不在这里赘述了，大家可以参照<a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="external">A successful Git branching model</a>。</p>
+<p>在0.1.3版本上线之后，我们发现我们需要开发流程，之前流程的不规范导致我们工作效率不高并且容易遗漏很多东西，所以我采用了最简单的敏捷开发流程，我们使用<a href="https://tower.im/" target="_blank" rel="external">Tower</a>进行协同，为什么选择Tower？</p>
+<blockquote>
+<ul>
+<li>与微信绑定，使用方便</li>
+<li>有敏捷开发板，可以构建简易的敏捷开发，防止需求遗漏，还可以进行问题讨论等，管理非常方便，也是现在reading正需要的</li>
+<li>没有多余的冗杂功能，reading现在还很小，这就足够了，简约而不简单</li>
+</ul>
+</blockquote>
+<p>这是我们目前的Reading敏捷开发板展示，可以看到我们已经在计划做0.1.4版本的需求了</p>
+<p><img src="http://7xr0xq.com1.z0.glb.clouddn.com/Reading%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E5%B1%95%E7%A4%BA.jpg" alt="Reading敏捷开发展示"></p>
+<h2 id="最后再说几句"><a href="#最后再说几句" class="headerlink" title="最后再说几句"></a>最后再说几句</h2><p>欢迎大家<a href="https://github.com/attentiveness/reading" target="_blank" rel="external">star，fork，pr，issue</a>，和reading、和我们一起成长~</p>
+<p>目前只发布了360市场和豌豆荚，360市场审核快一些，apk版本更新之后我会及时发布市场提交审核的，当然reading中也是有自己的热更新哒，react-native你懂得。针对reading项目我采用的<strong>热更新方案</strong>是<a href="https://github.com/Microsoft/react-native-code-push" target="_blank" rel="external">Microsoft/react-native-code-push</a>，因为reading是没有后端的，所以code-push项目完美的帮我解决了热更新的jsbundle版本管理发布问题。</p>
+<p><strong>目前Reading线上只有android版本，功能稳定之后我会做ios的兼容，并且有发布到AppStore的计划。</strong></p>
+<p><strong>Reading会持续更新下去的，希望能得到大家的支持和鼓励。你们的鼓励是我们前进的动力！</strong></p>
+<p><img src="http://7xr0xq.com1.z0.glb.clouddn.com/reading_in_react-native_showcase.jpg" alt="Reading in Facebook react-native showcase"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://7xr0xq.com1.z0.glb.clouddn.com/My_Official_Accounts.jpg" alt="RichardCao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎关注我的个人微信公众号，不定期推送精彩内容~</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xr0xq.com1.z0.glb.clouddn.com/wechatpay.jpg" alt="RichardCao WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react-native/" rel="tag">#react-native</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/17/逝去的2015/" rel="next" title="逝去的2015">
+                <i class="fa fa-chevron-left"></i> 逝去的2015
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/30/React-Native蜂鸟实践/" rel="prev" title="React-Native蜂鸟实践">
+                React-Native蜂鸟实践 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/02/06/Reading-App-Write-In-React-Native/"
+     data-title="Reading App Write In React-Native"
+     data-content=""
+     data-url="http://richard-cao.github.io/2016/02/06/Reading-App-Write-In-React-Native/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/06/Reading-App-Write-In-React-Native/"
+           data-title="Reading App Write In React-Native" data-url="http://richard-cao.github.io/2016/02/06/Reading-App-Write-In-React-Native/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xr0xq.com1.z0.glb.clouddn.com/%E5%9B%9B%E4%BB%A3.jpg"
+               alt="RichardCao" />
+          <p class="site-author-name" itemprop="name">RichardCao</p>
+          <p class="site-description motion-element" itemprop="description">不积小流，无以成江海。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Richard-Cao" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reading-App-Write-In-React-Native"><span class="nav-number">1.</span> <span class="nav-text">Reading App Write In React-Native</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Init"><span class="nav-number">2.</span> <span class="nav-text">Init</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restart"><span class="nav-number">3.</span> <span class="nav-text">Restart</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1-2"><span class="nav-number">4.</span> <span class="nav-text">0.1.2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Native-Android类似弹窗效果的实现"><span class="nav-number">5.</span> <span class="nav-text">React-Native Android类似弹窗效果的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Release-Note与线上事故复盘"><span class="nav-number">6.</span> <span class="nav-text">Release Note与线上事故复盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#敏捷开发"><span class="nav-number">7.</span> <span class="nav-text">敏捷开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后再说几句"><span class="nav-number">8.</span> <span class="nav-text">最后再说几句</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RichardCao</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"richardcao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("XDBxSGuHuREHL3P5xSrzSBTB-gzGzoHsz", "juXWzSS5WF9zbzahviwc1yVG");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
